@@ -207,6 +207,111 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/25/how-to-deploy-blog-ch-hz/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/25/how-to-deploy-blog-ch-hz/" class="post-title-link" itemprop="url">利用Hexo搭建个人博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-25 17:41:08" itemprop="dateCreated datePublished" datetime="2021-02-25T17:41:08+08:00">2021-02-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>通常情况下，我们会利用Github Pages作为站点，然后利用<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>搭建个人博客。</p>
+<p>搭建步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>以上步骤运行OK后，会看到Hexo默认主题的网页，这里推荐更换主题为：Next。步骤如下：</p>
+<ol>
+<li>在博客站点路径下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:next-theme/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure></li>
+<li>修改站点下<code>_config.yml</code>文件中的<code>theme</code>为<code>next</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure></li>
+<li>将博客部署到Github上</li>
+</ol>
+<p>修改<code>_config.yml</code>文件如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:xuanwuwake/xuanwuwake.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+
+<p>然后执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>出现问题：</p>
+<ol>
+<li>FetchError: network timeout at: <a target="_blank" rel="noopener" href="https://registry.npmjs.org/bluebird">https://registry.npmjs.org/bluebird</a></li>
+</ol>
+<p>解决方案看<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/61378672/npm-err-response-timeout-while-trying-to-fetch-https-registry-npmjs-org-react">这里</a>，创建~/.npmrc文件，并在这个文件中添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefer-offline&#x3D;true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>hexo d命令报错 ERROR Deployer not found: git</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21808961/article/details/84476504">安装</a>git插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h1 id="自动化编译部署"><a href="#自动化编译部署" class="headerlink" title="自动化编译部署"></a>自动化编译部署</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deploy.sh</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo server &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h1><p>在Hexo根目录下有个文件<code>_config.yml</code>，在这里面可以对Hexo做配置，具体配置见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration.html">这里</a>。</p>
+<p>另外，Hexo有全局变量、网站变量、页面变量等属性，也可以对Hexo做配置，具体变量见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/variables.html">这里</a>。</p>
+<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">https://hexo.io/zh-cn/index.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/getting-started.html">http://theme-next.iissnan.com/getting-started.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/bdcdf3790bba">https://www.jianshu.com/u/bdcdf3790bba</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63405693/hexo-cannot-display-next-theme">Hexo cannot display “next” theme</a></li>
+<li><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/installation.html">https://theme-next.js.org/docs/getting-started/installation.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next/tree/master">https://github.com/next-theme/hexo-theme-next/tree/master</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4d359d9777a0?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation">hexo+github 部署个人博客</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/22/%E5%AE%B9%E5%99%A8%E6%AF%94%E8%BE%83%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,108 +479,6 @@
 <li>函数或者类型命令：每个新单词首字母大写；</li>
 <li>常量：以<code>k</code>开头，每个新单词首字母大写；</li>
 <li>其他（普通变量，类成员变量，文件名）：全部小写，以<code>_</code>连接，类成员变量尾部多一个<code>_</code>.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/21/how-to-deploy-blog-ch-hz/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/21/how-to-deploy-blog-ch-hz/" class="post-title-link" itemprop="url">利用Hexo搭建个人博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-21 22:55:14" itemprop="dateCreated datePublished" datetime="2021-02-21T22:55:14+08:00">2021-02-21</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>通常情况下，我们会利用Github Pages作为站点，然后利用<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>搭建个人博客。</p>
-<p>搭建步骤如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>以上步骤运行OK后，会看到Hexo默认主题的网页，这里推荐更换主题为：Next。步骤如下：</p>
-<ol>
-<li>在博客站点路径下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:next-theme/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure></li>
-<li>修改站点下<code>_config.yml</code>文件中的<code>theme</code>为<code>next</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure></li>
-<li>将博客部署到Github上</li>
-</ol>
-<p>修改<code>_config.yml</code>文件如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:xuanwuwake/xuanwuwake.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-
-<p>然后执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>出现问题：</p>
-<ol>
-<li>FetchError: network timeout at: <a target="_blank" rel="noopener" href="https://registry.npmjs.org/bluebird">https://registry.npmjs.org/bluebird</a></li>
-</ol>
-<p>解决方案看<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/61378672/npm-err-response-timeout-while-trying-to-fetch-https-registry-npmjs-org-react">这里</a>，创建~/.npmrc文件，并在这个文件中添加：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefer-offline&#x3D;true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>hexo d命令报错 ERROR Deployer not found: git</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21808961/article/details/84476504">安装</a>git插件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<h1 id="自动化编译部署"><a href="#自动化编译部署" class="headerlink" title="自动化编译部署"></a>自动化编译部署</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deploy.sh</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo server &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
-<h1 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">https://hexo.io/zh-cn/index.html</a></li>
-<li><a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/getting-started.html">http://theme-next.iissnan.com/getting-started.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/bdcdf3790bba">https://www.jianshu.com/u/bdcdf3790bba</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63405693/hexo-cannot-display-next-theme">Hexo cannot display “next” theme</a></li>
-<li><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/installation.html">https://theme-next.js.org/docs/getting-started/installation.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next/tree/master">https://github.com/next-theme/hexo-theme-next/tree/master</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4d359d9777a0?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation">hexo+github 部署个人博客</a></li>
 </ul>
 
       
