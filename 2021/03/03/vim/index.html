@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Hello, Tingting~ 新春贺词  绿水生薄雾，麦浪和风舞。红竹声声碎，绿蚁杯杯醉。寒山钟鼓鸣，脆音姚且凝。北方一佳人，姿落玉婷婷。欢歌且载舞，赞盛世太平。   To: Tingting~">
+<meta name="description" content="vi&#x2F;vim按键光标移动方法   按键 说明    Home 移动当前行第一个字符   End 移动到当前行最后一个字符   G 移动到档案最后一行   nG 移动到档案第n行，n用set nu设置   gg 移动到档案第1行，相当于1G   n&lt;Enter&gt; n为数字，光标向下移动n行   搜索替换   按键 说明    &#x2F;word 在光标之下搜索名为word字符串   ?word">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新春贺词">
-<meta property="og:url" content="http://example.com/2021/02/21/Spring-celebration/index.html">
+<meta property="og:title" content="Linux vim">
+<meta property="og:url" content="http://example.com/2021/03/03/vim/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Hello, Tingting~ 新春贺词  绿水生薄雾，麦浪和风舞。红竹声声碎，绿蚁杯杯醉。寒山钟鼓鸣，脆音姚且凝。北方一佳人，姿落玉婷婷。欢歌且载舞，赞盛世太平。   To: Tingting~">
+<meta property="og:description" content="vi&#x2F;vim按键光标移动方法   按键 说明    Home 移动当前行第一个字符   End 移动到当前行最后一个字符   G 移动到档案最后一行   nG 移动到档案第n行，n用set nu设置   gg 移动到档案第1行，相当于1G   n&lt;Enter&gt; n为数字，光标向下移动n行   搜索替换   按键 说明    &#x2F;word 在光标之下搜索名为word字符串   ?word">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-21T14:31:31.109Z">
-<meta property="article:modified_time" content="2021-02-21T14:31:31.109Z">
+<meta property="article:published_time" content="2021-03-03T15:40:06.361Z">
+<meta property="article:modified_time" content="2021-03-03T15:40:06.361Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/02/21/Spring-celebration/">
+<link rel="canonical" href="http://example.com/2021/03/03/vim/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'en'
   };
 </script>
-<title>新春贺词 | Hexo</title>
+<title>Linux vim | Hexo</title>
   
 
 
@@ -159,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">新春贺词</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vi-vim%E6%8C%89%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">vi&#x2F;vim按键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">光标移动方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.2.</span> <span class="nav-text">搜索替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4"><span class="nav-number">1.3.</span> <span class="nav-text">删除复制粘贴</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEvim%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">配置vim特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEtab%E7%A9%BA%E6%A0%BC"><span class="nav-number">2.1.</span> <span class="nav-text">配置tab空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%A1%8C%E5%8F%B7"><span class="nav-number">2.2.</span> <span class="nav-text">配置行号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -213,7 +213,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/21/Spring-celebration/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/vim/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          新春贺词
+          Linux vim
         </h1>
 
         <div class="post-meta-container">
@@ -237,7 +237,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-02-21 22:31:31" itemprop="dateCreated datePublished" datetime="2021-02-21T22:31:31+08:00">2021-02-21</time>
+      <time title="Created: 2021-03-03 23:40:06" itemprop="dateCreated datePublished" datetime="2021-03-03T23:40:06+08:00">2021-03-03</time>
     </span>
 
   
@@ -250,13 +250,114 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Hello, Tingting~</p>
-<h4>新春贺词</h4>
+        <h1 id="vi-vim按键"><a href="#vi-vim按键" class="headerlink" title="vi/vim按键"></a>vi/vim按键</h1><h2 id="光标移动方法"><a href="#光标移动方法" class="headerlink" title="光标移动方法"></a>光标移动方法</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home</td>
+<td>移动当前行第一个字符</td>
+</tr>
+<tr>
+<td>End</td>
+<td>移动到当前行最后一个字符</td>
+</tr>
+<tr>
+<td>G</td>
+<td>移动到档案最后一行</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>移动到档案第n行，n用<code>set nu</code>设置</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>移动到档案第1行，相当于1G</td>
+</tr>
+<tr>
+<td>n<code>&lt;Enter&gt;</code></td>
+<td>n为数字，光标向下移动n行</td>
+</tr>
+</tbody></table>
+<h2 id="搜索替换"><a href="#搜索替换" class="headerlink" title="搜索替换"></a>搜索替换</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/word</td>
+<td>在光标之下搜索名为word字符串</td>
+</tr>
+<tr>
+<td>?word</td>
+<td>在光标之上搜索名为word字符串</td>
+</tr>
+<tr>
+<td>n</td>
+<td>n英文按键，重复前一个搜索动作</td>
+</tr>
+<tr>
+<td>N</td>
+<td>反向重复搜索</td>
+</tr>
+<tr>
+<td>:n1,n2s/word1/word2/g</td>
+<td>n1和n2是数字，在n1和n2之间搜索word1字符串，并将其替换成word2</td>
+</tr>
+</tbody></table>
+<h2 id="删除复制粘贴"><a href="#删除复制粘贴" class="headerlink" title="删除复制粘贴"></a>删除复制粘贴</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dd</td>
+<td>删除游标所在行</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>删除游标所在行的向下n行</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制游标所在行</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td>n为数字，复制游标所在行向下n行</td>
+</tr>
+<tr>
+<td>p,P</td>
+<td>p,将复制的数据粘贴在光标的下一行，P将复制数据粘贴到上一行</td>
+</tr>
+<tr>
+<td>u</td>
+<td>复原前一个动作，即撤回—&gt; undo</td>
+</tr>
+<tr>
+<td>[Ctrl]+r</td>
+<td>重做上一个动作—&gt; redo</td>
+</tr>
+<tr>
+<td>.</td>
+<td>重复前一个动作</td>
+</tr>
+</tbody></table>
+<h1 id="配置vim特性"><a href="#配置vim特性" class="headerlink" title="配置vim特性"></a>配置vim特性</h1><p>全局修改vim，可以编辑<code>/etc/vim/vimrc</code></p>
+<p>只修改当前用户vim配置，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
 
-<p>绿水生薄雾，麦浪和风舞。<br>红竹声声碎，绿蚁杯杯醉。<br>寒山钟鼓鸣，脆音姚且凝。<br>北方一佳人，姿落玉婷婷。<br>欢歌且载舞，赞盛世太平。</p>
-<hr>
+<h2 id="配置tab空格"><a href="#配置tab空格" class="headerlink" title="配置tab空格"></a>配置tab空格</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ts=4</span><br><span class="line"><span class="built_in">set</span> expandtab</span><br><span class="line"><span class="built_in">set</span> autoindent</span><br><span class="line">:<span class="built_in">set</span> ts=4</span><br><span class="line">:<span class="built_in">set</span> expandtab</span><br><span class="line">:%retab!</span><br></pre></td></tr></table></figure>
 
-<p>To: Tingting~</p>
+<h2 id="配置行号"><a href="#配置行号" class="headerlink" title="配置行号"></a>配置行号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> nu</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-vim.html">vim命令</a></p>
 
     </div>
 
@@ -270,14 +371,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/21/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2021/02/25/how-to-deploy-blog-ch-hz/" rel="prev" title="利用Hexo搭建个人博客">
+                  <i class="fa fa-chevron-left"></i> 利用Hexo搭建个人博客
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/22/%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/" rel="next" title="C/C++命令规范">
-                  C/C++命令规范 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
